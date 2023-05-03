@@ -21,6 +21,10 @@
 		87971C982A0285030088978B /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971C922A0285030088978B /* DashboardViewModel.swift */; };
 		87971C992A0285030088978B /* DashboardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971C942A0285030088978B /* DashboardDetailViewController.swift */; };
 		87971C9E2A0299840088978B /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971C9D2A0299840088978B /* Movie.swift */; };
+		87971CA22A02B4170088978B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CA12A02B4170088978B /* NetworkManager.swift */; };
+		87971CA42A02BBBC0088978B /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CA32A02BBBC0088978B /* BaseRequest.swift */; };
+		87971CA62A02BC7C0088978B /* MovieRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CA52A02BC7C0088978B /* MovieRequest.swift */; };
+		87971CA82A02BE1B0088978B /* MovieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CA72A02BE1B0088978B /* MovieResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +63,10 @@
 		87971C922A0285030088978B /* DashboardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		87971C942A0285030088978B /* DashboardDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardDetailViewController.swift; sourceTree = "<group>"; };
 		87971C9D2A0299840088978B /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		87971CA12A02B4170088978B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		87971CA32A02BBBC0088978B /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
+		87971CA52A02BC7C0088978B /* MovieRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRequest.swift; sourceTree = "<group>"; };
+		87971CA72A02BE1B0088978B /* MovieResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,7 +185,10 @@
 		87971C9B2A0299600088978B /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				87971CA02A02B3FF0088978B /* Response */,
+				87971C9F2A02B3EA0088978B /* Request */,
 				87971C9C2A02996A0088978B /* Models */,
+				87971CA12A02B4170088978B /* NetworkManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -188,6 +199,23 @@
 				87971C9D2A0299840088978B /* Movie.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		87971C9F2A02B3EA0088978B /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				87971CA32A02BBBC0088978B /* BaseRequest.swift */,
+				87971CA52A02BC7C0088978B /* MovieRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		87971CA02A02B3FF0088978B /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				87971CA72A02BE1B0088978B /* MovieResponse.swift */,
+			);
+			path = Response;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,12 +349,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87971CA42A02BBBC0088978B /* BaseRequest.swift in Sources */,
+				87971CA22A02B4170088978B /* NetworkManager.swift in Sources */,
 				87971C992A0285030088978B /* DashboardDetailViewController.swift in Sources */,
+				87971CA62A02BC7C0088978B /* MovieRequest.swift in Sources */,
 				87971C972A0285030088978B /* DashboardViewController.swift in Sources */,
 				87971C952A0285030088978B /* MovieRouter.swift in Sources */,
 				87971C5D2A0284490088978B /* AppDelegate.swift in Sources */,
 				87971C5F2A0284490088978B /* SceneDelegate.swift in Sources */,
 				87971C962A0285030088978B /* Routable.swift in Sources */,
+				87971CA82A02BE1B0088978B /* MovieResponse.swift in Sources */,
 				87971C9E2A0299840088978B /* Movie.swift in Sources */,
 				87971C982A0285030088978B /* DashboardViewModel.swift in Sources */,
 			);
