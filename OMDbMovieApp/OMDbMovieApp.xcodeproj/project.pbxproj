@@ -20,6 +20,7 @@
 		87971C972A0285030088978B /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971C912A0285030088978B /* DashboardViewController.swift */; };
 		87971C982A0285030088978B /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971C922A0285030088978B /* DashboardViewModel.swift */; };
 		87971C992A0285030088978B /* DashboardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971C942A0285030088978B /* DashboardDetailViewController.swift */; };
+		87971C9E2A0299840088978B /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971C9D2A0299840088978B /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		87971C912A0285030088978B /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		87971C922A0285030088978B /* DashboardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		87971C942A0285030088978B /* DashboardDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardDetailViewController.swift; sourceTree = "<group>"; };
+		87971C9D2A0299840088978B /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		87971C5B2A0284490088978B /* OMDbMovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				87971C9B2A0299600088978B /* Network */,
 				87971C8F2A0285030088978B /* Modules */,
 				87971C8C2A0285030088978B /* Routers */,
 				87971C5C2A0284490088978B /* AppDelegate.swift */,
@@ -169,6 +172,22 @@
 				87971C942A0285030088978B /* DashboardDetailViewController.swift */,
 			);
 			path = DashboardDetail;
+			sourceTree = "<group>";
+		};
+		87971C9B2A0299600088978B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				87971C9C2A02996A0088978B /* Models */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		87971C9C2A02996A0088978B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				87971C9D2A0299840088978B /* Movie.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +327,7 @@
 				87971C5D2A0284490088978B /* AppDelegate.swift in Sources */,
 				87971C5F2A0284490088978B /* SceneDelegate.swift in Sources */,
 				87971C962A0285030088978B /* Routable.swift in Sources */,
+				87971C9E2A0299840088978B /* Movie.swift in Sources */,
 				87971C982A0285030088978B /* DashboardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
