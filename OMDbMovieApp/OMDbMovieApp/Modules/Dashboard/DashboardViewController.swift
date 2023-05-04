@@ -15,6 +15,7 @@ final class DashboardViewController: UIViewController {
         static let collectionViewHeight = 250.0
         static let tableViewCellHeight = 100.0
         static let loadingViewBackgroundOpacity = 0.5
+        static let collectionViewCellPadding = 20.0
     }
 
     var viewModel: DashboardViewModelInterface?
@@ -26,9 +27,11 @@ final class DashboardViewController: UIViewController {
 
     private let collectionView: UICollectionView = {
         let viewLayout = UICollectionViewFlowLayout()
+        viewLayout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: viewLayout)
-        collectionView.backgroundColor = .blue
+        collectionView.backgroundColor = .white
         collectionView.heightAnchor.constraint(equalToConstant: Constant.collectionViewHeight).isActive = true
+        collectionView.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.reuseIdentifier())
 
         return collectionView
     }()
@@ -65,6 +68,7 @@ final class DashboardViewController: UIViewController {
                     self?.tableViewMovies = tableViewMovies
                     self?.collectionViewMovies = collectionViewMovies
                     self?.tableView.reloadData()
+                    self?.collectionView.reloadData()
                     self?.removeLoadingView()
                 case .tableViewMoviesFetched(let movies):
                     self?.tableViewMovies = movies
@@ -92,6 +96,9 @@ private extension DashboardViewController {
     func applyViews() {
         tableView.dataSource = self
         tableView.delegate = self
+
+        collectionView.delegate = self
+        collectionView.dataSource = self
 
         let stackView = UIStackView(arrangedSubviews: [tableView, collectionView])
         stackView.axis = .vertical
@@ -168,5 +175,53 @@ extension DashboardViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         // TODO: Will be implemented
+    }
+}
+
+// MARK: UICollectionViewDataSource
+
+extension DashboardViewController: UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+        return collectionViewMovies.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: MovieCollectionViewCell.reuseIdentifier(),
+            for: indexPath) as! MovieCollectionViewCell
+
+
+        return cell
+    }
+}
+
+// MARK: UICollectionViewDelegate
+
+extension DashboardViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        // TODO: Will be implemented
+    }
+}
+
+// MARK: UICollectionViewDelegateFlowLayout
+
+extension DashboardViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        return CGSize(
+            width: Constant.collectionViewHeight - Constant.collectionViewCellPadding ,
+            height: Constant.collectionViewHeight - Constant.collectionViewCellPadding
+        )
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return Constant.collectionViewCellPadding
     }
 }
