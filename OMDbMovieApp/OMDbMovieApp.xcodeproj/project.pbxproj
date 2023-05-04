@@ -29,6 +29,7 @@
 		87971CB12A02F1E00088978B /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CB02A02F1E00088978B /* UIView+Layout.swift */; };
 		87971CB32A02F2990088978B /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CB22A02F2990088978B /* UIView+Additions.swift */; };
 		87971CB52A02F8430088978B /* MovieTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CB42A02F8430088978B /* MovieTableViewModel.swift */; };
+		87971CB82A03ECAD0088978B /* FileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CB72A03ECAD0088978B /* FileUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		87971CB02A02F1E00088978B /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		87971CB22A02F2990088978B /* UIView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
 		87971CB42A02F8430088978B /* MovieTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewModel.swift; sourceTree = "<group>"; };
+		87971CB72A03ECAD0088978B /* FileUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 		87971C5B2A0284490088978B /* OMDbMovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				87971CB62A03ECA30088978B /* Utils */,
 				87971CAF2A02F16F0088978B /* Extensions */,
 				87971CAB2A02F0E30088978B /* Views */,
 				87971C9B2A0299600088978B /* Network */,
@@ -252,6 +255,14 @@
 				87971CB22A02F2990088978B /* UIView+Additions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		87971CB62A03ECA30088978B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				87971CB72A03ECAD0088978B /* FileUtil.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87971CB82A03ECAD0088978B /* FileUtil.swift in Sources */,
 				87971CB32A02F2990088978B /* UIView+Additions.swift in Sources */,
 				87971CA42A02BBBC0088978B /* BaseRequest.swift in Sources */,
 				87971CA22A02B4170088978B /* NetworkManager.swift in Sources */,
