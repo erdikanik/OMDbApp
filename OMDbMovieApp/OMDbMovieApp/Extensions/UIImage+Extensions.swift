@@ -9,7 +9,7 @@ import UIKit
 
 extension UIImageView {
 
-    func load(url: String?, imageName: String) {
+    func load(url: String?, imageName: String, completion: @escaping ()->()) {
         DispatchQueue.main.async {
             self.backgroundColor = .white
 
@@ -18,11 +18,13 @@ extension UIImageView {
             guard imageData == nil else {
                 DispatchQueue.main.async {
                     self.image = UIImage(data: imageData ?? Data())
+                    completion()
                 }
                 return
             }
 
             guard let url = url, let imageUrl = URL(string: url) else {
+                completion()
                 return
             }
 
@@ -30,9 +32,9 @@ extension UIImageView {
                 if let data = try? Data(contentsOf: imageUrl) {
                     if let image = UIImage(data: data) {
                         FileUtil.saveFile(by: imageName, data: data)
-
                         DispatchQueue.main.async {
                             self?.image = image
+                            completion()
                         }
                     }
                 }
