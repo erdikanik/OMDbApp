@@ -25,6 +25,8 @@
 		87971CA42A02BBBC0088978B /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CA32A02BBBC0088978B /* BaseRequest.swift */; };
 		87971CA62A02BC7C0088978B /* MovieRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CA52A02BC7C0088978B /* MovieRequest.swift */; };
 		87971CA82A02BE1B0088978B /* MovieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CA72A02BE1B0088978B /* MovieResponse.swift */; };
+		87971CB12A02F1E00088978B /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CB02A02F1E00088978B /* UIView+Layout.swift */; };
+		87971CB32A02F2990088978B /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CB22A02F2990088978B /* UIView+Additions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		87971CA32A02BBBC0088978B /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
 		87971CA52A02BC7C0088978B /* MovieRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRequest.swift; sourceTree = "<group>"; };
 		87971CA72A02BE1B0088978B /* MovieResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponse.swift; sourceTree = "<group>"; };
+		87971CB02A02F1E00088978B /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
+		87971CB22A02F2990088978B /* UIView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,7 @@
 		87971C5B2A0284490088978B /* OMDbMovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				87971CAF2A02F16F0088978B /* Extensions */,
 				87971C9B2A0299600088978B /* Network */,
 				87971C8F2A0285030088978B /* Modules */,
 				87971C8C2A0285030088978B /* Routers */,
@@ -216,6 +221,15 @@
 				87971CA72A02BE1B0088978B /* MovieResponse.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		87971CAF2A02F16F0088978B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				87971CB02A02F1E00088978B /* UIView+Layout.swift */,
+				87971CB22A02F2990088978B /* UIView+Additions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87971CB32A02F2990088978B /* UIView+Additions.swift in Sources */,
 				87971CA42A02BBBC0088978B /* BaseRequest.swift in Sources */,
 				87971CA22A02B4170088978B /* NetworkManager.swift in Sources */,
 				87971C992A0285030088978B /* DashboardDetailViewController.swift in Sources */,
@@ -361,6 +376,7 @@
 				87971CA82A02BE1B0088978B /* MovieResponse.swift in Sources */,
 				87971C9E2A0299840088978B /* Movie.swift in Sources */,
 				87971C982A0285030088978B /* DashboardViewModel.swift in Sources */,
+				87971CB12A02F1E00088978B /* UIView+Layout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
