@@ -38,4 +38,14 @@ extension UIView {
         topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor, constant: edgeInsents.top).isActive = true
         bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: edgeInsents.bottom).isActive = true
     }
+
+    func addToMiddle() {
+
+        guard let superview = superview else {
+            return
+        }
+
+        centerXAnchor.constraint(equalTo: superview.centerXAnchor).isActive = true
+        centerYAnchor.constraint(equalTo: superview.centerYAnchor).isActive = true
+    }
 }
