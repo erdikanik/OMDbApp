@@ -14,12 +14,12 @@ enum Result<T> {
 
 protocol NetworkManagerProtocol {
 
-    func performRequest<T: Codable>(request: BaseRequest, completion: @escaping (Result<T>) -> Void)
+    func performRequest<T: Decodable>(request: BaseRequest, completion: @escaping (Result<T>) -> Void)
 }
 
 final class NetworkManager: NetworkManagerProtocol {
 
-    func performRequest<T: Codable>(request: BaseRequest, completion: @escaping (Result<T>) -> Void) {
+    func performRequest<T: Decodable>(request: BaseRequest, completion: @escaping (Result<T>) -> Void) {
         guard let networkRequest = request.asURLRequest() else { return }
 
         let task = URLSession.shared.dataTask(with: networkRequest) { (data, _, error) in
