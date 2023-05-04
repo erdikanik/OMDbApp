@@ -10,9 +10,29 @@ import UIKit
 
 final class DashboardViewController: UIViewController {
 
+    private enum Constant {
+
+        static let collectionViewHeight = 250.0
+    }
+
     var viewModel: DashboardViewModelInterface?
 
     private let searchController = UISearchController(searchResultsController: nil)
+
+    private let collectionView: UICollectionView = {
+        let viewLayout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: viewLayout)
+        collectionView.backgroundColor = .blue
+        collectionView.heightAnchor.constraint(equalToConstant: Constant.collectionViewHeight).isActive = true
+
+        return collectionView
+    }()
+
+    private let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .green
+        return tableView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +40,13 @@ final class DashboardViewController: UIViewController {
         title = "Movies"
         applyStyle()
         applySearchController()
+
+        let stackView = UIStackView(arrangedSubviews: [tableView, collectionView])
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+
+        stackView.add(to: view)
+        stackView.coverToSuperView()
     }
 }
 
@@ -59,4 +86,26 @@ extension DashboardViewController: UISearchBarDelegate {
   func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
       // TODO: Will be implemented
   }
+}
+
+// MARK: UITableViewDataSource
+
+extension DashboardViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+}
+
+// MARK: UITableViewDelegate
+
+extension DashboardViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        // TODO: Will be implemented
+    }
 }

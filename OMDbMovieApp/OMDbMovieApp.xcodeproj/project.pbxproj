@@ -25,8 +25,10 @@
 		87971CA42A02BBBC0088978B /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CA32A02BBBC0088978B /* BaseRequest.swift */; };
 		87971CA62A02BC7C0088978B /* MovieRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CA52A02BC7C0088978B /* MovieRequest.swift */; };
 		87971CA82A02BE1B0088978B /* MovieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CA72A02BE1B0088978B /* MovieResponse.swift */; };
+		87971CAE2A02F0F40088978B /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CAD2A02F0F40088978B /* MovieTableViewCell.swift */; };
 		87971CB12A02F1E00088978B /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CB02A02F1E00088978B /* UIView+Layout.swift */; };
 		87971CB32A02F2990088978B /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CB22A02F2990088978B /* UIView+Additions.swift */; };
+		87971CB52A02F8430088978B /* MovieTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CB42A02F8430088978B /* MovieTableViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,8 +71,10 @@
 		87971CA32A02BBBC0088978B /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
 		87971CA52A02BC7C0088978B /* MovieRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRequest.swift; sourceTree = "<group>"; };
 		87971CA72A02BE1B0088978B /* MovieResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponse.swift; sourceTree = "<group>"; };
+		87971CAD2A02F0F40088978B /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		87971CB02A02F1E00088978B /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		87971CB22A02F2990088978B /* UIView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
+		87971CB42A02F8430088978B /* MovieTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				87971CAF2A02F16F0088978B /* Extensions */,
+				87971CAB2A02F0E30088978B /* Views */,
 				87971C9B2A0299600088978B /* Network */,
 				87971C8F2A0285030088978B /* Modules */,
 				87971C8C2A0285030088978B /* Routers */,
@@ -221,6 +226,23 @@
 				87971CA72A02BE1B0088978B /* MovieResponse.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		87971CAB2A02F0E30088978B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				87971CAC2A02F0E80088978B /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		87971CAC2A02F0E80088978B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				87971CAD2A02F0F40088978B /* MovieTableViewCell.swift */,
+				87971CB42A02F8430088978B /* MovieTableViewModel.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		87971CAF2A02F16F0088978B /* Extensions */ = {
@@ -371,12 +393,14 @@
 				87971C972A0285030088978B /* DashboardViewController.swift in Sources */,
 				87971C952A0285030088978B /* MovieRouter.swift in Sources */,
 				87971C5D2A0284490088978B /* AppDelegate.swift in Sources */,
+				87971CB52A02F8430088978B /* MovieTableViewModel.swift in Sources */,
 				87971C5F2A0284490088978B /* SceneDelegate.swift in Sources */,
 				87971C962A0285030088978B /* Routable.swift in Sources */,
 				87971CA82A02BE1B0088978B /* MovieResponse.swift in Sources */,
 				87971C9E2A0299840088978B /* Movie.swift in Sources */,
 				87971C982A0285030088978B /* DashboardViewModel.swift in Sources */,
 				87971CB12A02F1E00088978B /* UIView+Layout.swift in Sources */,
+				87971CAE2A02F0F40088978B /* MovieTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
