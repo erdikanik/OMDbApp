@@ -80,7 +80,6 @@ private extension MovieTableViewCell {
 
         titleLabel.text = model.title
         descriptionLabel.text = model.description
-
-        // TODO Will be implemented
+        imageView?.load(url: model.imageUrl, imageName: model.imageUrl.components(separatedBy: "/").last ?? "")
     }
 }
