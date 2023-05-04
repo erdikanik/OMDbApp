@@ -14,6 +14,7 @@ final class DashboardViewController: UIViewController {
 
         static let collectionViewHeight = 250.0
         static let tableViewCellHeight = 100.0
+        static let loadingViewBackgroundOpacity = 0.5
     }
 
     var viewModel: DashboardViewModelInterface?
@@ -34,8 +35,19 @@ final class DashboardViewController: UIViewController {
 
     private let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .green
         return tableView
+    }()
+
+    /// Can be move key screen window
+    private let loadingView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black.withAlphaComponent(Constant.loadingViewBackgroundOpacity)
+        let indicatorView = UIActivityIndicatorView(style: .large)
+        indicatorView.color = .white
+        indicatorView.add(to: view)
+        indicatorView.addToMiddle()
+        indicatorView.startAnimating()
+        return view
     }()
 
     override func viewDidLoad() {
@@ -47,17 +59,24 @@ final class DashboardViewController: UIViewController {
         applyViews()
 
         viewModel?.stateChangeHandler = { [weak self] state in
-            switch(state) {
-            case .initialMovies(let tableViewMovies, let collectionViewMovies):
-                self?.tableViewMovies = tableViewMovies
-                self?.collectionViewMovies = collectionViewMovies
-                self?.tableView.reloadData()
-            case .error(let error):
-                // TODO: Will be implemented
-                break
+            DispatchQueue.main.async {
+                switch(state) {
+                case .initialMovies(let tableViewMovies, let collectionViewMovies):
+                    self?.tableViewMovies = tableViewMovies
+                    self?.collectionViewMovies = collectionViewMovies
+                    self?.tableView.reloadData()
+                    self?.removeLoadingView()
+                case .tableViewMoviesFetched(let movies):
+                    self?.tableViewMovies = movies
+                    self?.tableView.reloadData()
+                case .error(let error):
+                    // TODO: Will be implemented
+                    break
+                }
             }
         }
 
+        showLoadingView()
         viewModel?.fetchInitialMovies()
     }
 }
@@ -89,8 +108,26 @@ private extension DashboardViewController {
         searchController.searchBar.placeholder = "Movies"
         navigationItem.searchController = searchController
         definesPresentationContext = true
+    }
 
-        searchController.searchBar.delegate = self
+    func showLoadingView() {
+        loadingView.add(to: view)
+        loadingView.coverToSuperView()
+    }
+
+    func removeLoadingView() {
+        loadingView.removeFromSuperview()
+    }
+}
+
+// MARK: ScrollView
+
+extension DashboardViewController {
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if tableView.contentOffset.y >= (tableView.contentSize.height - tableView.frame.size.height) {
+            self.viewModel?.needsNewPage()
+        }
     }
 }
 
@@ -99,16 +136,8 @@ private extension DashboardViewController {
 extension DashboardViewController: UISearchResultsUpdating {
 
   func updateSearchResults(for searchController: UISearchController) {
-      // TODO: Will be implemented
-  }
-}
-
-// MARK: UISearchBarDelegate
-
-extension DashboardViewController: UISearchBarDelegate {
-
-  func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-      // TODO: Will be implemented
+      guard let text = searchController.searchBar.text else { return }
+      viewModel?.searchMovies(searchKey: text)
   }
 }
 

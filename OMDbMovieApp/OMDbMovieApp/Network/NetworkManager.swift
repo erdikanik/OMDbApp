@@ -14,20 +14,20 @@ enum Result<T> {
 
 protocol NetworkManagerProtocol {
 
-    func performRequest<T: Decodable>(request: BaseRequest, completion: @escaping (Result<T>) -> Void)
+    func performRequest<T: Decodable>(request: BaseRequest, completion: @escaping (Result<T>) -> Void) -> URLSessionTask?
 }
 
 final class NetworkManager: NetworkManagerProtocol {
 
-    func performRequest<T: Decodable>(request: BaseRequest, completion: @escaping (Result<T>) -> Void) {
-        guard let networkRequest = request.asURLRequest() else { return }
+    func performRequest<T: Decodable>(request: BaseRequest, completion: @escaping (Result<T>) -> Void) -> URLSessionTask? {
+        guard let networkRequest = request.asURLRequest() else { return nil }
 
         let task = URLSession.shared.dataTask(with: networkRequest) { (data, _, error) in
             guard let data = data else {
                 completion(Result.error(error ?? NSError()))
                 return
             }
-            print(String(data: data, encoding: .utf8)!)
+            // print(String(data: data, encoding: .utf8)!)
 
             let decoder = JSONDecoder()
 
@@ -40,5 +40,6 @@ final class NetworkManager: NetworkManagerProtocol {
         }
 
         task.resume()
+        return task
     }
 }
