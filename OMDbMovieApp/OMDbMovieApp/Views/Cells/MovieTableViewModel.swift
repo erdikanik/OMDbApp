@@ -9,7 +9,13 @@ import Foundation
 
 struct MovieTableViewModel {
 
-    let imageUrl: String
-    let title: String
-    let description: String
+    private(set) var imageUrl: String
+    private(set) var title: String
+    private(set) var description: String
+
+    init(model: Movie) {
+        self.imageUrl = model.poster
+        self.title = model.title
+        self.description = model.type + " - " + model.year
+    }
 }

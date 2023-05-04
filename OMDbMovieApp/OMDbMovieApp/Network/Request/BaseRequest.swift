@@ -11,7 +11,7 @@ class BaseRequest {
 
     private enum Constant {
 
-        static let basePath = "https://omdbapi.com/?s=Star&apikey=2e9eed30"
+        static let basePath = "https://omdbapi.com/"
     }
 
     private enum MappingKeys {

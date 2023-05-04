@@ -35,12 +35,14 @@ final class MovieTableViewCell: UITableViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: Constant.fontSize, weight: .bold)
+        label.textColor = .black
         return label
     }()
 
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: Constant.fontSize, weight: .regular)
+        label.textColor = .black
         return label
     }()
 
@@ -68,6 +70,10 @@ private extension MovieTableViewCell {
         let horizontalStack = UIStackView(arrangedSubviews: [cellImageView, verticalStack])
         horizontalStack.axis = .horizontal
         horizontalStack.distribution = .fill
+        cellImageView.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+
+        horizontalStack.add(to: contentView)
+        horizontalStack.coverToSuperView()
     }
 
     func applyModelToViews(model: MovieTableViewModel) {

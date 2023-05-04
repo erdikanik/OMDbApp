@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         let window = UIWindow(windowScene: windowScene)
-        let navigationController = router.startRouting(viewModel: DashboardViewModel())
+        let navigationController = router.startRouting(viewModel: DashboardViewModel(networkManager: NetworkManager()))
         window.rootViewController = navigationController
         self.window = window
         window.makeKeyAndVisible()

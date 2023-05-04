@@ -13,9 +13,13 @@ final class DashboardViewController: UIViewController {
     private enum Constant {
 
         static let collectionViewHeight = 250.0
+        static let tableViewCellHeight = 100.0
     }
 
     var viewModel: DashboardViewModelInterface?
+
+    private var tableViewMovies: [Movie] = []
+    private var collectionViewMovies: [Movie] = []
 
     private let searchController = UISearchController(searchResultsController: nil)
 
@@ -40,13 +44,21 @@ final class DashboardViewController: UIViewController {
         title = "Movies"
         applyStyle()
         applySearchController()
+        applyViews()
 
-        let stackView = UIStackView(arrangedSubviews: [tableView, collectionView])
-        stackView.axis = .vertical
-        stackView.distribution = .fill
+        viewModel?.stateChangeHandler = { [weak self] state in
+            switch(state) {
+            case .initialMovies(let tableViewMovies, let collectionViewMovies):
+                self?.tableViewMovies = tableViewMovies
+                self?.collectionViewMovies = collectionViewMovies
+                self?.tableView.reloadData()
+            case .error(let error):
+                // TODO: Will be implemented
+                break
+            }
+        }
 
-        stackView.add(to: view)
-        stackView.coverToSuperView()
+        viewModel?.fetchInitialMovies()
     }
 }
 
@@ -56,6 +68,18 @@ private extension DashboardViewController {
 
     func applyStyle() {
         view.backgroundColor = .white
+    }
+
+    func applyViews() {
+        tableView.dataSource = self
+        tableView.delegate = self
+
+        let stackView = UIStackView(arrangedSubviews: [tableView, collectionView])
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+
+        stackView.add(to: view)
+        stackView.coverToSuperViewSafeArea()
     }
 
     func applySearchController() {
@@ -93,11 +117,19 @@ extension DashboardViewController: UISearchBarDelegate {
 extension DashboardViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        0
+        tableViewMovies.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = MovieTableViewCell(style: .default, reuseIdentifier: MovieTableViewCell.reuseIdentifier())
+        let model = tableViewMovies[indexPath.row]
+        cell.model = MovieTableViewModel(model: model)
+
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        Constant.tableViewCellHeight
     }
 }
 
