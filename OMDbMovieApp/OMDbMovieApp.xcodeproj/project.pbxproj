@@ -31,6 +31,7 @@
 		87971CB52A02F8430088978B /* MovieTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CB42A02F8430088978B /* MovieTableViewModel.swift */; };
 		87971CB82A03ECAD0088978B /* FileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CB72A03ECAD0088978B /* FileUtil.swift */; };
 		87971CBA2A03F7320088978B /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CB92A03F7320088978B /* UIImage+Extensions.swift */; };
+		87971CBC2A0462D80088978B /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CBB2A0462D80088978B /* MovieCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		87971CB42A02F8430088978B /* MovieTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewModel.swift; sourceTree = "<group>"; };
 		87971CB72A03ECAD0088978B /* FileUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtil.swift; sourceTree = "<group>"; };
 		87971CB92A03F7320088978B /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		87971CBB2A0462D80088978B /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +248,7 @@
 			children = (
 				87971CAD2A02F0F40088978B /* MovieTableViewCell.swift */,
 				87971CB42A02F8430088978B /* MovieTableViewModel.swift */,
+				87971CBB2A0462D80088978B /* MovieCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				87971CB52A02F8430088978B /* MovieTableViewModel.swift in Sources */,
 				87971C5F2A0284490088978B /* SceneDelegate.swift in Sources */,
 				87971C962A0285030088978B /* Routable.swift in Sources */,
+				87971CBC2A0462D80088978B /* MovieCollectionViewCell.swift in Sources */,
 				87971CA82A02BE1B0088978B /* MovieResponse.swift in Sources */,
 				87971C9E2A0299840088978B /* Movie.swift in Sources */,
 				87971C982A0285030088978B /* DashboardViewModel.swift in Sources */,
