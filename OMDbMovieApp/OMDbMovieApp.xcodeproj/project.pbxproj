@@ -32,6 +32,7 @@
 		87971CB82A03ECAD0088978B /* FileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CB72A03ECAD0088978B /* FileUtil.swift */; };
 		87971CBA2A03F7320088978B /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CB92A03F7320088978B /* UIImage+Extensions.swift */; };
 		87971CBC2A0462D80088978B /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CBB2A0462D80088978B /* MovieCollectionViewCell.swift */; };
+		87971CBE2A0471AD0088978B /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87971CBD2A0471AD0088978B /* String+Additions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		87971CB72A03ECAD0088978B /* FileUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtil.swift; sourceTree = "<group>"; };
 		87971CB92A03F7320088978B /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		87971CBB2A0462D80088978B /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		87971CBD2A0471AD0088978B /* String+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +261,7 @@
 				87971CB02A02F1E00088978B /* UIView+Layout.swift */,
 				87971CB22A02F2990088978B /* UIView+Additions.swift */,
 				87971CB92A03F7320088978B /* UIImage+Extensions.swift */,
+				87971CBD2A0471AD0088978B /* String+Additions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				87971CA22A02B4170088978B /* NetworkManager.swift in Sources */,
 				87971C992A0285030088978B /* DashboardDetailViewController.swift in Sources */,
 				87971CA62A02BC7C0088978B /* MovieRequest.swift in Sources */,
+				87971CBE2A0471AD0088978B /* String+Additions.swift in Sources */,
 				87971C972A0285030088978B /* DashboardViewController.swift in Sources */,
 				87971C952A0285030088978B /* MovieRouter.swift in Sources */,
 				87971C5D2A0284490088978B /* AppDelegate.swift in Sources */,

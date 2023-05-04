@@ -82,7 +82,7 @@ private extension MovieTableViewCell {
         descriptionLabel.text = model.description
         imageView?.load(
             url: model.imageUrl,
-            imageName: model.imageUrl.components(separatedBy: "/").last ?? "",
+            imageName: model.imageUrl.urlComponentsLastItem(),
             completion: { [weak self] in
             DispatchQueue.main.async {
                 if self?.cellImageView.image == nil {
