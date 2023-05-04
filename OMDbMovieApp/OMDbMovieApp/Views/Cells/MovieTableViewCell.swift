@@ -72,6 +72,9 @@ private extension MovieTableViewCell {
 
     func applyModelToViews(model: MovieTableViewModel) {
 
-        // TODO: Will be implemented
+        titleLabel.text = model.title
+        descriptionLabel.text = model.description
+
+        // TODO Will be implemented
     }
 }
