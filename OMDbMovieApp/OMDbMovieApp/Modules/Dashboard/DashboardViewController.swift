@@ -15,7 +15,8 @@ final class DashboardViewController: UIViewController {
         static let collectionViewHeight = 250.0
         static let tableViewCellHeight = 100.0
         static let loadingViewBackgroundOpacity = 0.5
-        static let collectionViewCellPadding = 20.0
+        static let collectionViewCellPadding = 40.0
+        static let collectionViewCellLineSpacing = 20.0
     }
 
     var viewModel: DashboardViewModelInterface?
@@ -132,8 +133,10 @@ private extension DashboardViewController {
 extension DashboardViewController {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if tableView.contentOffset.y >= (tableView.contentSize.height - tableView.frame.size.height) {
+        if scrollView == tableView && (tableView.contentOffset.y >= (tableView.contentSize.height - tableView.frame.size.height)) {
             self.viewModel?.needsNewPage()
+        } else if scrollView == collectionView && (collectionView.contentOffset.x >= (collectionView.contentSize.width - collectionView.frame.size.width)) {
+            // TODO: Will be implemented
         }
     }
 }
@@ -192,7 +195,8 @@ extension DashboardViewController: UICollectionViewDataSource {
             withReuseIdentifier: MovieCollectionViewCell.reuseIdentifier(),
             for: indexPath) as! MovieCollectionViewCell
 
-
+        let movie = collectionViewMovies[indexPath.row]
+        cell.imageUrl = movie.poster
         return cell
     }
 }
@@ -222,6 +226,6 @@ extension DashboardViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return Constant.collectionViewCellPadding
+        return Constant.collectionViewCellLineSpacing
     }
 }
