@@ -74,6 +74,9 @@ final class DashboardViewController: UIViewController {
                 case .tableViewMoviesFetched(let movies):
                     self?.tableViewMovies = movies
                     self?.tableView.reloadData()
+                case .collectionViewMoviesFetched(let movies):
+                    self?.collectionViewMovies = movies
+                    self?.collectionView.reloadData()
                 case .error(let error):
                     // TODO: Will be implemented
                     break
@@ -136,7 +139,7 @@ extension DashboardViewController {
         if scrollView == tableView && (tableView.contentOffset.y >= (tableView.contentSize.height - tableView.frame.size.height)) {
             self.viewModel?.needsNewPage()
         } else if scrollView == collectionView && (collectionView.contentOffset.x >= (collectionView.contentSize.width - collectionView.frame.size.width)) {
-            // TODO: Will be implemented
+            self.viewModel?.needsNewPageForCollectionView()
         }
     }
 }

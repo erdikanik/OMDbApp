@@ -11,6 +11,7 @@ enum DashboardViewModelState {
 
     case initialMovies([Movie], [Movie])
     case tableViewMoviesFetched([Movie])
+    case collectionViewMoviesFetched([Movie])
     case error(String)
 }
 
@@ -25,6 +26,8 @@ protocol DashboardViewModelInterface {
     /// Increase page count and fetches new pages
     func needsNewPage()
 
+    /// Increase page count and fetches new pages for collection view's default search key
+    func needsNewPageForCollectionView()
 
     /// Retrieve movies by search parameter
     /// - Parameter searchKey: Search key
@@ -52,6 +55,7 @@ final class DashboardViewModel {
     private var tableViewMovies: [Movie] = []
     private var collectionViewMovies: [Movie] = []
     private var lockedTableFetches = true
+    private var lockedCollectionViewFetches = true
     private var requestedSearchArray: [String] = []
     private var timer: Timer?
     private var currentUrlSessionTask: URLSessionTask?
@@ -86,6 +90,30 @@ extension DashboardViewModel: DashboardViewModelInterface {
                     self?.currentTableViewPage += 1
                     self?.tableViewMovies.append(contentsOf: response?.searchResults ?? [])
                     self?.stateChangeHandler?(.tableViewMoviesFetched(self?.tableViewMovies ?? []))
+                }
+            }
+        }
+    }
+
+    func needsNewPageForCollectionView() {
+        guard !lockedCollectionViewFetches else { return }
+        lockedCollectionViewFetches = true
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Constant.pageDelayTime) {
+            _ = self.callMovieService(
+                searchKey: Constant.collectionViewDefaultSearchKey,
+                page: self.currentCollectionViewPage + 1
+            ) { [weak self] response, error in
+
+                self?.lockedCollectionViewFetches = false
+                guard error == nil else {
+                    self?.stateChangeHandler?(.error(error?.localizedDescription ?? ""))
+                    return
+                }
+
+                if !(response?.searchResults.isEmpty ?? true) {
+                    self?.currentCollectionViewPage += 1
+                    self?.collectionViewMovies.append(contentsOf: response?.searchResults ?? [])
+                    self?.stateChangeHandler?(.collectionViewMoviesFetched(self?.collectionViewMovies ?? []))
                 }
             }
         }
@@ -164,6 +192,7 @@ private extension DashboardViewModel {
         group.notify(queue: .main) {
             self.stateChangeHandler?(.initialMovies(self.tableViewMovies, self.collectionViewMovies))
             self.lockedTableFetches = false
+            self.lockedCollectionViewFetches = false
         }
     }
 
