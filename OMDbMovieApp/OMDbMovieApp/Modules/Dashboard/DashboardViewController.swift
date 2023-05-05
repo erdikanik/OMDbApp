@@ -182,7 +182,7 @@ extension DashboardViewController: UITableViewDataSource {
 
 extension DashboardViewController: UITableViewDelegate {
 
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         viewModel?.moviesTableViewDidSelect(index: indexPath.row)
     }

@@ -26,6 +26,7 @@ final class MovieTableViewCell: UITableViewCell {
 
     private lazy var cellImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleToFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.heightAnchor.constraint(equalToConstant: Constant.imageViewEdgeSize).isActive = true
         imageView.widthAnchor.constraint(equalToConstant: Constant.imageViewEdgeSize).isActive = true

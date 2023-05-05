@@ -23,16 +23,6 @@ protocol MovieRoutable: AnyObject {
 final class MovieRouter {
 
     private var navigationController: UINavigationController!
-
-    lazy var dashboard: DashboardViewController = {
-        let dashboard = DashboardViewController()
-        return dashboard
-    }()
-
-    lazy var dashboardDetail: DashboardDetailViewController = {
-        let dashboardDetail = DashboardDetailViewController()
-        return dashboardDetail
-    }()
 }
 
 // MARK: MovieRoutable
@@ -40,6 +30,7 @@ final class MovieRouter {
 extension MovieRouter: MovieRoutable {
 
     func startRouting(viewModel: DashboardViewModelInterface) -> UINavigationController {
+        let dashboard = DashboardViewController()
         dashboard.viewModel = viewModel
         dashboard.router = self
         navigationController = UINavigationController(rootViewController: dashboard)
@@ -47,6 +38,7 @@ extension MovieRouter: MovieRoutable {
     }
 
     func routeToDashboardDetail(viewModel: DashboardDetailViewModelInterface) {
+        let dashboardDetail = DashboardDetailViewController()
         dashboardDetail.viewModel = viewModel
         navigationController.pushViewController(dashboardDetail, animated: true)
     }
