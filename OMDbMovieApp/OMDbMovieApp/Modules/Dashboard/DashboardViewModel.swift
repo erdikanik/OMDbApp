@@ -12,6 +12,7 @@ enum DashboardViewModelState {
     case initialMovies([Movie], [Movie])
     case tableViewMoviesFetched([Movie])
     case collectionViewMoviesFetched([Movie])
+    case shouldRouteToDetail(DashboardDetailViewModelInterface)
     case error(String)
 }
 
@@ -32,6 +33,14 @@ protocol DashboardViewModelInterface {
     /// Retrieve movies by search parameter
     /// - Parameter searchKey: Search key
     func searchMovies(searchKey: String)
+
+    /// When tableview cell is tapped this method should be called
+    /// - Parameter index: Table view movies index
+    func moviesTableViewDidSelect(index: Int)
+
+    /// Route to detail by index
+    /// - Parameter index: Collection view movies index
+    func movieCollectionViewDidSelect(index: Int)
 }
 
 final class DashboardViewModel {
@@ -140,6 +149,14 @@ extension DashboardViewModel: DashboardViewModelInterface {
             }
         }
     }
+
+    func moviesTableViewDidSelect(index: Int) {
+        movieCellDidSelect(isTableView: true, index: index)
+    }
+
+    func movieCollectionViewDidSelect(index: Int) {
+        movieCellDidSelect(isTableView: false, index: index)
+    }
 }
 
 // MARK: Service calls
@@ -208,5 +225,12 @@ private extension DashboardViewModel {
                 completion(response, nil)
             }
         }
+    }
+
+    func movieCellDidSelect(isTableView: Bool, index: Int) {
+
+        let movie: Movie = isTableView ? tableViewMovies[index] : collectionViewMovies[index]
+        let dashboardDetailViewModel = DashboardDetailViewModel(movie: movie)
+        stateChangeHandler?(.shouldRouteToDetail(dashboardDetailViewModel))
     }
 }

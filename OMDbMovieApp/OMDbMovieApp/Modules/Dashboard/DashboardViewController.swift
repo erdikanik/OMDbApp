@@ -20,6 +20,7 @@ final class DashboardViewController: UIViewController {
     }
 
     var viewModel: DashboardViewModelInterface?
+    weak var router: MovieRoutable?
 
     private var tableViewMovies: [Movie] = []
     private var collectionViewMovies: [Movie] = []
@@ -77,6 +78,8 @@ final class DashboardViewController: UIViewController {
                 case .collectionViewMoviesFetched(let movies):
                     self?.collectionViewMovies = movies
                     self?.collectionView.reloadData()
+                case .shouldRouteToDetail(let dashboardDetailViewModel):
+                    self?.router?.routeToDashboardDetail(viewModel: dashboardDetailViewModel)
                 case .error(let error):
                     // TODO: Will be implemented
                     break
@@ -180,7 +183,8 @@ extension DashboardViewController: UITableViewDataSource {
 extension DashboardViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        // TODO: Will be implemented
+        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel?.moviesTableViewDidSelect(index: indexPath.row)
     }
 }
 
@@ -210,7 +214,8 @@ extension DashboardViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        // TODO: Will be implemented
+        collectionView.deselectItem(at: indexPath, animated: true)
+        viewModel?.movieCollectionViewDidSelect(index: indexPath.row)
     }
 }
 

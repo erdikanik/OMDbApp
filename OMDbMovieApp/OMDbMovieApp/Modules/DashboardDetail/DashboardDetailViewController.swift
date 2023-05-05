@@ -5,6 +5,11 @@
 //  Created by Erdi Kanık on 3.05.2023.
 //
 
-import Foundation
+import UIKit
 
-// TODO: Will be implemented
+final class DashboardDetailViewController: UIViewController {
+
+    var viewModel: DashboardDetailViewModelInterface?
+
+    // TODO: Will be implemented
+}
